@@ -1,8 +1,7 @@
-# Dockerfile
-
+# Use uma imagem base do Python
 FROM python:3.10-slim
 
-# Instala dependências do sistema para o WeasyPrint
+# Instale dependências do sistema necessárias para o WeasyPrint
 RUN apt-get update && apt-get install -y \
     build-essential \
     libffi-dev \
@@ -18,17 +17,17 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Cria diretório de trabalho
+# Defina o diretório de trabalho
 WORKDIR /app
 
-# Copia os arquivos do projeto
+# Copie os arquivos do projeto para o diretório de trabalho
 COPY . /app
 
-# Instala dependências Python
+# Instale as dependências do Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expõe a porta usada pelo Flask
+# Exponha a porta que o Flask usará
 EXPOSE 5000
 
-# Comando para rodar o app (ajuste se usar outro script principal)
+# Comando para iniciar a aplicação
 CMD ["python", "app.py"]
