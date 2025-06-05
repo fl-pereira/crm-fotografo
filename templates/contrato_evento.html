@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Contrato de Evento</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        h1, h2 { text-align: center; }
+        .clausula { margin-bottom: 15px; }
+        .assinaturas { display: flex; justify-content: space-around; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <h1>CONTRATO DE PRESTAÇÃO DE SERVIÇO FOTOGRÁFICO</h1>
+    
+    <h2>IDENTIFICAÇÃO DAS PARTES</h2>
+    <p><strong>CONTRATADO:</strong> AQUELE ÁLBUM - FOTOGRAFIAS, CNPJ 55.619.362/0001-57</p>
+    <p><strong>CONTRATANTE:</strong> {{ contrato.cliente.nome_completo }}, CPF {{ contrato.cliente.cpf }}</p>
+    
+    <h2>DO OBJETIVO DO CONTRATO</h2>
+    <div class="clausula">
+        <p><strong>Cláusula 1ª.</strong> É objetivo do presente contrato a prestação do serviço de FOTOGRAFIA a cargo 
+        do CONTRATADO para o evento de {{ contrato.nome_evento }}, a se realizar no dia {{ contrato.data_evento }}, 
+        aproximadamente às {{ contrato.horario_evento }}, em {{ contrato.local_evento }}, 
+        {{ contrato.cidade_estado_evento }}.</p>
+        
+        <p><strong>Parágrafo Único.</strong> A equipe CONTRATADA prestará o serviço de cobertura fotográfica por até 
+        {{ contrato.tempo_cobertura }} totais a partir do horário previsto para início do {{ contrato.nome_evento }}, 
+        com {{ contrato.qtd_fotografos }} fotógrafo(s) durante toda a cobertura fotográfica.</p>
+    </div>
+    
+    <!-- Demais cláusulas fixas -->
+    
+    <div class="assinaturas">
+        <div>
+            <p>__________________________________</p>
+            <p>Felipe Luiz Pereira</p>
+            <p>076.843.299-52</p>
+        </div>
+        <div>
+            <p>__________________________________</p>
+            <p>{{ contrato.cliente.nome_completo }}</p>
+            <p>{{ contrato.cliente.cpf }}</p>
+        </div>
+    </div>
+    
+    <p>{{ contrato.cidade_estado_evento }}, {{ contrato.data_contrato }}.</p>
+</body>
+</html>

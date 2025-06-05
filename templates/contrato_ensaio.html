@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Contrato de Ensaio Fotográfico</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        h1, h2 { text-align: center; }
+        .clausula { margin-bottom: 15px; }
+        .assinaturas { display: flex; justify-content: space-around; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <h1>CONTRATO DE PRESTAÇÃO DE SERVIÇO FOTOGRÁFICO</h1>
+    
+    <h2>IDENTIFICAÇÃO DAS PARTES</h2>
+    <p><strong>CONTRATADO:</strong> AQUELE ÁLBUM - FOTOGRAFIAS, CNPJ 55.619.362/0001-57</p>
+    <p><strong>CONTRATANTE:</strong> {{ contrato.cliente.nome_completo }}, CPF {{ contrato.cliente.cpf }}</p>
+    
+    <h2>DO OBJETIVO DO CONTRATO</h2>
+    <div class="clausula">
+        <p><strong>Cláusula 1ª.</strong> É objetivo do presente contrato a prestação do serviço de FOTOGRAFIA a cargo 
+        do CONTRATADO para o ENSAIO FOTOGRÁFICO, a se realizar no dia {{ contrato.data_ensaio }}, 
+        aproximadamente às {{ contrato.horario_ensaio }}, em {{ contrato.cidade_estado_ensaio }}.</p>
+        
+        <p><strong>Parágrafo Primeiro.</strong> A equipe CONTRATADA prestará o serviço de ensaio fotográfico por até 
+        {{ contrato.duracao_ensaio }} horas totais a partir do horário previsto para início.</p>
+    </div>
+    
+    <!-- Demais cláusulas fixas -->
+    
+    <div class="assinaturas">
+        <div>
+            <p>__________________________________</p>
+            <p>Felipe Luiz Pereira</p>
+            <p>076.843.299-52</p>
+        </div>
+        <div>
+            <p>__________________________________</p>
+            <p>{{ contrato.cliente.nome_completo }}</p>
+            <p>{{ contrato.cliente.cpf }}</p>
+        </div>
+    </div>
+    
+    <p>{{ contrato.cidade_estado_ensaio }}, {{ contrato.data_contrato }}.</p>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Clientes Cadastrados</h2>
+<a href="{{ url_for('cadastrar_cliente') }}" class="btn btn-primary mb-3">Novo Cliente</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Contatos</th>
+            <th>Contratos</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.nome_completo }}</td>
+            <td>{{ cliente.cpf }}</td>
+            <td>
+                {% if cliente.email %}{{ cliente.email }}<br>{% endif %}
+                {% if cliente.whatsapp %}{{ cliente.whatsapp }}{% endif %}
+            </td>
+            <td>{{ cliente.contratos|length }}</td>
+            <td>
+                <a href="{{ url_for('contratos_cliente', id=cliente.id) }}" class="btn btn-sm btn-info">Ver Contratos</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Novo Contrato - Ensaio Fotográfico</h2>
+<form method="POST" action="{{ url_for('gerar_contrato') }}">
+    <input type="hidden" name="tipo" value="ensaio">
+    
+    <h3>Selecionar Cliente</h3>
+    <select name="cliente_id" required>
+        <option value="">Selecione um cliente</option>
+        {% for cliente in clientes %}
+        <option value="{{ cliente.id }}">{{ cliente.nome_completo }} - {{ cliente.cpf }}</option>
+        {% endfor %}
+    </select>
+    <a href="{{ url_for('cadastrar_cliente') }}">Cadastrar novo cliente</a>
+    
+    <h3>Detalhes do Ensaio</h3>
+    <input type="date" name="data_ensaio" required>
+    <input type="time" name="horario_ensaio" required>
+    <input type="text" name="local_ensaio" placeholder="Local do ensaio" required>
+    <input type="text" name="cidade_estado_ensaio" placeholder="Cidade/Estado" required>
+    <input type="text" name="duracao_ensaio" placeholder="Duração (horas)" required>
+    
+    <h3>Serviço</h3>
+    <textarea name="descricao_servico" placeholder="Descrição do serviço" required></textarea>
+    
+    <h3>Pagamento</h3>
+    <input type="text" name="valor" placeholder="Valor em R$" required>
+    <input type="text" name="forma_pagamento" placeholder="Forma de pagamento" required>
+    <input type="text" name="data_contrato" placeholder="Data por extenso (ex: 10 de janeiro de 2023)" required>
+    
+    <button type="submit">Gerar Contrato</button>
+</form>
+{% endblock %}

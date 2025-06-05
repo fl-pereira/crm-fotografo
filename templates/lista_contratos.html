@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Últimos Contratos</h2>
+<div class="mb-3">
+    <a href="{{ url_for('novo_contrato', tipo='evento') }}" class="btn btn-success">Novo Contrato de Evento</a>
+    <a href="{{ url_for('novo_contrato', tipo='ensaio') }}" class="btn btn-primary">Novo Contrato de Ensaio</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nº</th>
+            <th>Cliente</th>
+            <th>Tipo</th>
+            <th>Data</th>
+            <th>Valor</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for contrato in contratos %}
+        <tr>
+            <td>{{ contrato.id }}</td>
+            <td>{{ contrato.cliente.nome_completo }}</td>
+            <td>
+                {% if contrato.tipo == 'evento' %}
+                <span class="badge bg-success">Evento</span>
+                {% else %}
+                <span class="badge bg-primary">Ensaio</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if contrato.tipo == 'evento' %}
+                    {{ contrato.data_evento }}
+                {% else %}
+                    {{ contrato.data_ensaio }}
+                {% endif %}
+            </td>
+            <td>{{ contrato.valor }}</td>
+            <td>
+                <a href="{{ url_for('visualizar_contrato', id=contrato.id) }}" 
+                   class="btn btn-sm btn-info" target="_blank">Visualizar</a>
+                <a href="{{ url_for('download_contrato', id=contrato.id) }}" 
+                   class="btn btn-sm btn-secondary">Download</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
