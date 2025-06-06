@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Clientes</title>
+</head>
+<body>
+    <h1>Cadastro de Clientes</h1>
+
+    <form method="POST">
+        <label>Nome completo:</label>
+        <input type="text" name="nome" required><br>
+
+        <label>CPF:</label>
+        <input type="text" name="cpf" required placeholder="000.000.000-00"><br>
+
+        <label>Email:</label>
+        <input type="email" name="email"><br>
+
+        <label>WhatsApp:</label>
+        <input type="text" name="whatsapp"><br>
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <hr>
+
+    <h2>Clientes cadastrados:</h2>
+    <ul>
+        {% for cliente in clientes %}
+            <li>{{ cliente.nome }} — {{ cliente.cpf }}</li>
+        {% else %}
+            <li>Nenhum cliente cadastrado ainda.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
