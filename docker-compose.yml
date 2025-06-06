@@ -4,7 +4,7 @@ services:
   app:
     build: .
     ports:
-      - "5001:5000"
+      - "8000:5000"  # Mapeia 8000 no host para 5000 no container
     volumes:
       - .:/app
     environment:
